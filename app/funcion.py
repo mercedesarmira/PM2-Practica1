@@ -17,21 +17,20 @@ def encontrar_maximo(lista_de_numeros):
     Raises
     ------
     ValueError
-        Indica si la lista tiene elementos no aceptables.
+        Indica si la lista tiene elementos no numéricos.
 
     Examples
     --------
     >>> encontrar_maximo([3, 2, 5])
     5
-    >>> encontrar_maximo([1, 1])
-    1
     >>> encontrar_maximo([])
     None
     """
     if not lista_de_numeros: 
         return None
-    try:
-        return max(lista_de_numeros)
-    except TypeError:
-        raise ValueError("Todos los elementos de la lista deben ser números int o float")
-        
+    
+    for i in lista_de_numeros:
+        if not isinstance(i, (int, float)):
+            raise ValueError("Todos los elementos de la lista deben ser números int o float")
+    
+    return max(lista_de_numeros)
